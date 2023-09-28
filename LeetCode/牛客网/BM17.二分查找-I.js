@@ -14,3 +14,6 @@ function search (nums, target) {
 module.exports = {
   search: search,
 };
+
+// 测试用例
+console.log(search([1, 2, 4, 4, 5], 4));

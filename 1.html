@@ -1,15 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+<html>
+<head> 
+    <title>getBoundingClientRect 示例</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 100px;
+            background-color: lightblue;
+            position: absolute;
+            top: 50px;
+            left: 50px;
+        }
+    </style>
 </head>
 <body>
-  <div>
-    1
-    <svg width="160" height="160" viewBox="80 80 80 80">
-      <circle cx="80" cy="80" r="80" fill="yellow" />
-  </div>
+    <div id="box">这是一个示例</div>
+
+    <script>
+        const box = document.getElementById('box');
+        const rect = box.getBoundingClientRect();//获取元素的大小及其相对于视口的位置
+
+        console.log('left:', rect);
+        console.log('top:', rect.top);
+        console.log('right:', rect.right);//right和bottom是相对于视口的位置
+        console.log('bottom:', rect.bottom);
+        console.log('width:', rect.width);
+        console.log('height:', rect.height);
+    </script>
 </body>
 </html>
