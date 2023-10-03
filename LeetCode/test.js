@@ -853,4 +853,51 @@ static修饰的属性和方法都是静态方法和属性,只能被类名调用,
 // const nums = [1, 1, 1, 2,2, 2, 3];
 // // const length = removeDuplicates(nums);
 // // console.log(length); // [1, 1, 2, 2, 3]
+// class A {
+//   constructor() {
+//     this.promise = Promise.resolve(); // 初始化一个已解决的 Promise
+//   }
+
+//   log(str) {
+//     // 将 log 操作添加到 Promise 链中
+//     this.promise = this.promise.then(() => {
+//       console.log(str);
+//       return this; // 返回类实例自身
+//     });
+//     return this; // 返回类实例自身
+//   }
+
+//   wait(delay) {
+//     // 将 wait 操作添加到 Promise 链中
+//     this.promise = this.promise.then(() => {
+//       return new Promise((resolve) => {
+//         setTimeout(() => {
+//           resolve(this); // 返回类实例自身
+//         }, delay);
+//       });
+//     });
+//     return this; // 返回类实例自身
+//   }
+
+//   // 添加一个结束方法，以便在链式调用结束后执行其他操作
+//   end() {
+//     return this.promise;
+//   }
+// }
+
+// // 使用示例
+// new A()
+//   .log("a")
+//   .wait(10)
+//   .log("b")
+//   .wait(2000)
+//   .wait(10)
+//   .log("c")
+//   .end()
+//   .then(() => {
+//     console.log("Chain completed.");
+//   })
+//   .catch((error) => {
+//     console.error("Error:", error);
+//   });
 
