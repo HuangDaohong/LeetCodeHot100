@@ -9,5 +9,4 @@ let removeDuplicates = function (nums) {
 };
 
 removeDuplicates([1, 1, 2, 2, 2, 3]);
-removeDuplicates([1, 1, 2, 2, 2, 3]);
 console.log(removeDuplicates([]));

@@ -88,4 +88,4 @@ const letterCombinations2 = digits => {
   }, ['']);
   return res;
 };
-console.log(letterCombinations2('2'));
+console.log(letterCombinations2('234'));

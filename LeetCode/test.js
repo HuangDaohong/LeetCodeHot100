@@ -901,3 +901,13 @@ static修饰的属性和方法都是静态方法和属性,只能被类名调用,
 //     console.error("Error:", error);
 //   });
 
+function combine(str1, str2) {
+  const res = [];
+  for (let i = 0; i < str1.length; i++) {
+    for (let j = 0; j < str2.length; j++) {
+      res.push(str1[i] + str2[j]);
+    }
+  }
+  return res;
+}
+console.log(combine([''],'abc'));

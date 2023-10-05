@@ -2,7 +2,7 @@
  * @param {string} s
  * @return {string}
  */
-// 笨方法
+// 暴力，时间复杂度O(n^3) 空间复杂度O(1)
 var longestPalindrome = function (s) {
   let res = s[0];
   for (let i = 0; i < s.length - 1; i++) {
@@ -27,7 +27,6 @@ const isPalindrome = (s) => {
 const isPalindrome1 = (str) => {
   return str === str.split('').reverse().join('');
 };
-
 const isPalindrome2 = (str) => str.split('').every((item, index) => item === str[str.length - index - 1]);
 //  return str.split('').every((item, index) => item === str.at(- 1 - index));
 

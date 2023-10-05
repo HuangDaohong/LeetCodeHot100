@@ -20,7 +20,6 @@ function backtrack (list, temp, nums) {
     temp.pop();
   }
 }
-
 const permute = function (nums) {
   // 1、终止条件
   let list = [];
@@ -53,4 +52,21 @@ const permute2 = nums => {
 
 
 let nums = [1, 2, 3];
-console.log(permute2(nums));
+console.log(permute3(nums));
+
+function permute3(nums) {
+  if (nums.length === 0) {
+    return [[]];
+  }
+  return nums.reduce((pre, num) => {
+    const arr = []
+    pre.forEach(perm => {
+      for (let i = 0; i <= perm.length; i++) {
+        const newPerm = [...perm];
+        newPerm.splice(i, 0, num);
+        arr.push(newPerm);
+      }
+    });
+    return arr;
+  }, [[]]);
+}
