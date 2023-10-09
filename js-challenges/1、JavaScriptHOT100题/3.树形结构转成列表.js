@@ -59,7 +59,7 @@ function treeToList (data) {
     dfs(data);
     return res;
 }
-// console.log(treeToList(data));
+console.log(treeToList(data));
 
 function treeToList2 (data) {
     if (!Array.isArray(data) && data.length === 0) return;

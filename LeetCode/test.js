@@ -901,13 +901,65 @@ static修饰的属性和方法都是静态方法和属性,只能被类名调用,
 //     console.error("Error:", error);
 //   });
 
-function combine(str1, str2) {
-  const res = [];
-  for (let i = 0; i < str1.length; i++) {
-    for (let j = 0; j < str2.length; j++) {
-      res.push(str1[i] + str2[j]);
-    }
-  }
-  return res;
+// const parseUrl = (url) => {
+//   const params = {};
+//   const arr = url.split('?')[1].split('&');
+//   arr.forEach((item) => {
+//     const [key, value] = item.split('=');
+//     // params[key] = value;
+//     if (!value) {
+//       params[key] = '';
+//     } else {
+//       params[key] = decodeURI(value);//url解码
+//     }
+//   });
+//   return params;
+// };
+
+
+// const getSearchParams = (url) => {
+//   const searchPar = new URLSearchParams(url);
+//   const paramsObj = {};
+//   for (const [key, value] of searchPar.entries()) {
+//     paramsObj[key] = value;
+//   }
+//   return paramsObj;
+// };
+// // 测试
+// const url = 'http://www.domain.com/?user=anonymous&id=123&id=456&id=789&city=%E5%8C%97%E4%BA%AC&enabled';
+// console.log(getSearchParams(url));
+// // {
+// //   user: 'anonymous',
+// //   id: [ '1', '2', '3', '456', '789' ],
+// //   city: '北京',
+// //   enabled: true
+// // }
+
+// 将数组中的0移动到最后 --- 双指针
+// const moveZero = (arr) => {
+//   let i = 0;
+//   let j = 0;
+//   while (j < arr.length) {
+//     if (arr[j] !== 0) {
+//       [arr[i], arr[j]] = [arr[j], arr[i]];
+//       i++;
+//     }
+//     j++;
+//   }
+//   return arr;
+// };
+// let arr1 = [1, 2, 0, 0, 3, 4, 0, 5, 0, 6, 7, 0, 8, 9, 0];
+// console.log(moveZero(arr1));
+
+async function async1 () {
+  await async2();
+  console.log('async1');
+  return 'async1 success'
 }
-console.log(combine([''],'abc'));
+async function async2 () {
+  return new Promise((resolve, reject) => {
+    console.log('async2')
+    reject('error')
+  })
+}
+async1().then(res => console.log(res))

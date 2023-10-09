@@ -9,7 +9,7 @@ const threeSumClosest = (nums, target) => {
     // 初始化一个最小值
     let min = Infinity;
     const len = nums.length;
-    for (let i = 0; i < len; i++) {
+    for (let i = 0; i < len-2; i++) {
         // 定义左右指针
         let [left, right] = [i + 1, len - 1];
         while (left < right) {

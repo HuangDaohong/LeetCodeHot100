@@ -20,7 +20,7 @@ const productExceptSelf = nums => {
 // 1. 和**求前缀和**的思路一致，分别求出**左累积数组**和**右累积数组**
 // 2. 两个数组的元素对应相乘，即可得到当前元素的答案
 
-const productExceptSelf = nums => {
+const productExceptSelf2 = nums => {
     const len = nums.length;
     // 定义左累积数组、右累积数组，初始值都为 1
     const resLeft = new Array(len).fill(1);

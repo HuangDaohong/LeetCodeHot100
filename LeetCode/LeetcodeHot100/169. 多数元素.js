@@ -24,7 +24,6 @@ const majorityElement = nums => {
             stack.push(nums[i]);
             continue;
         }
-
         if (stack[stack.length - 1] === nums[i]) {
             // 相等入栈
             stack.push(nums[i]);
