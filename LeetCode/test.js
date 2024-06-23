@@ -106,11 +106,7 @@
 // console.log(p); // Person {name: "huihui", age: 123}
 // p.say(); // huihui
 
-// const obj={
-//   [Symbol('a')]:1,
-//   'b':undefined,
-//   'c':function(){},
-// }
+
 // console.log(Reflect.ownKeys(obj));
 // console.log(Object.getOwnPropertyNames(obj));
 // console.log(Object.getOwnPropertySymbols(obj));
@@ -951,15 +947,90 @@ static修饰的属性和方法都是静态方法和属性,只能被类名调用,
 // let arr1 = [1, 2, 0, 0, 3, 4, 0, 5, 0, 6, 7, 0, 8, 9, 0];
 // console.log(moveZero(arr1));
 
-async function async1 () {
-  await async2();
-  console.log('async1');
-  return 'async1 success'
+//判断数组内哪一段连续子数组与目标值最接近,返回最接近的子数组
+
+// 打乱数组
+// const shuffle = (arr) => {
+//   const result = [...arr];
+//   for (let i = 0; i < result.length; i++) {
+//     const randomIndex = Math.floor(Math.random() * result.length);
+//     [result[i], result[randomIndex]] = [result[randomIndex], result[i]];
+//   }
+//   return result;
+// }
+class TreeNode {
+  constructor(val) {
+    this.val = val;
+    this.left = null;
+    this.right = null;
+  }
 }
-async function async2 () {
-  return new Promise((resolve, reject) => {
-    console.log('async2')
-    reject('error')
-  })
+
+function calculateLevelSum(root) {
+  if (!root) {
+    return [];
+  }
+
+  const levelSums = [];
+  const queue = [root];
+
+  while (queue.length > 0) {
+    let levelSum = 0;
+    const levelSize = queue.length;
+
+    for (let i = 0; i < levelSize; i++) {
+      const node = queue.shift();
+      levelSum += node.val;
+      if (node.left) {
+        queue.push(node.left);
+      }
+      if (node.right) {
+        queue.push(node.right);
+      }
+    }
+
+    levelSums.push(levelSum);
+  }
+
+  return levelSums;
 }
-async1().then(res => console.log(res))
+
+function maxValue(root) {
+
+  let map = new Map();
+
+  function dfs(node, depth) {
+    if (!node) return;
+
+    if (!map.has(depth)) {
+      map.set(depth, 0);
+    }
+
+    map.set(depth, map.get(depth) + node.val);
+
+    dfs(node.left, depth + 1);
+    dfs(node.right, depth + 1);
+  }
+
+  dfs(root, 0);
+
+  // 交换一次节点,重新计算权值
+  let max = 0; 
+  for (let [depth, sum] of map) {
+    if (depth > 0) {
+      map.set(depth, map.get(depth-1) + map.get(depth+1) - root.val); 
+    }
+    max = Math.max(max, map.get(depth));
+  }
+
+  return max;
+
+}
+
+// Example usage:
+const root = new TreeNode(3);
+root.left = new TreeNode(2);
+root.right = new TreeNode(3);
+root.left.left = new TreeNode(4);
+
+console.log(maxValue(root)); // Output: 7
